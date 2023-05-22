@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import * as jwt from 'jsonwebtoken'
 import { User } from 'src/interfaces/User';
 import { Observable } from 'rxjs';
-import * as dotenv from 'dotenv'
+// import * as dotenv from 'dotenv'
 
-dotenv.config()
+// dotenv.config()
 
 @Injectable({
   providedIn: 'root'
