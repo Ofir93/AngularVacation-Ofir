@@ -1,8 +1,10 @@
 import { Router, Request, Response } from 'express'
 import {
   createVacation,
+  deleteById,
   findVacation,
   findVacations,
+  updateVac,
 } from '../controllers/vacations'
 
 const router: Router = Router()
@@ -34,29 +36,29 @@ router.get('/', async (req: Request, res: Response) => {
   }
 })
 
-// router.patch('/:id', async (req, res) => {
-//   try {
-//     const isUpdated = await update(req.params.id, req.body)
-//     isUpdated
-//       ? res.send(`Vacation ${req.params.id} updated!`)
-//       : res.send('Nothing updated')
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).send('Nothing updated')
-//   }
-// })
+router.patch('/:id', async (req: Request, res: Response) => {
+  try {
+    const isUpdated = await updateVac(req.body)
+    isUpdated.acknowledged 
+      ? res.send(`Vacation ${req.params.id} updated!`)
+      : res.send('Nothing updated')
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('Nothing updated')
+  }
+})
 
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const isDeleted = await deleteById(req.params.id)
-//     isDeleted
-//       ? res.send(`Vacation ${req.params.id} deleted!`)
-//       : res.send('Nothing deleted')
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500)
-//   }
-// })
+router.delete('/:id', async (req: Request, res: Response) => {
+  try {
+    const isDeleted = await deleteById(+req.params.id)
+    isDeleted.deletedCount
+      ? res.send(`Vacation ${req.params.id} deleted!`)
+      : res.send('Nothing deleted')
+  } catch (error) {
+    console.log(error)
+    res.status(500)
+  }
+})
 
 
 export default router

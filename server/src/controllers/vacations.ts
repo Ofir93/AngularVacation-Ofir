@@ -1,6 +1,6 @@
 import { Ivacation } from '../interfaces/vacation'
 import { Vacation } from '../models/vacation'
-import { Document } from 'mongoose'
+import { Document, UpdateWriteOpResult } from 'mongoose'
 
 export const createVacation = async (
   doc: Ivacation
@@ -37,15 +37,14 @@ export const findVacations = async (filter: {
 
 export const updateVac = async (
  vac: Ivacation
-): Promise<Document<unknown, any, Ivacation>> => {
- const updated = await Vacation.updateOne({id: vac.id},  {$set:{vac}}, function (err: Error, docs: Document) {
-    if (err){
-      console.log(err);
-        return null
-    }
-    else{
-        return 1
-    }
-    })
+): Promise<UpdateWriteOpResult> => {
+ const updated = await Vacation.updateOne({id: vac.id},  {$set: vac})
     return updated
+}
+
+
+export const deleteById = async (id: number) => {
+  const deleted = await Vacation.deleteOne({id: id})
+  // await vacationModel.deleteFollow(id)
+  return deleted
 }
