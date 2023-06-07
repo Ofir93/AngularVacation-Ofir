@@ -8,11 +8,17 @@ import { InterfacesService } from 'src/services/interfaces.service';
 import { UsersService } from 'src/services/users.service';
 import { VacationsService } from 'src/services/vacations.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { GreetingComponent } from './greeting/greeting.component';
+import { VacationCardsComponent } from './vacation-cards/vacation-cards.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
+    GreetingComponent,
+    VacationCardsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,10 @@
 <div id="mainC">
 <app-nav-bar></app-nav-bar>
-  <!-- {page ? page : <Greeting interfacesChange={interfacesChange}></Greeting>} -->
+<ng-container [ngSwitch]="component">
+  <app-greeting *ngSwitchCase="'greet'" (componentChange)="changeComponent($event)"></app-greeting>
+  <!-- <app-juices *ngSwitchCase="'juices'"></app-juices>
+  <app-vegetables *ngSwitchCase="'vegetables'"></app-vegetables> -->
+</ng-container>  <!-- {page ? page : <Greeting interfacesChange={interfacesChange}></Greeting>} -->
 </div>
 
   <router-outlet></router-outlet>
