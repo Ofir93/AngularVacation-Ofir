@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as jwt from 'jsonwebtoken'
-import { User } from 'src/interfaces/User';
-import { Observable } from 'rxjs';
-// import * as dotenv from 'dotenv'
 
-// dotenv.config()
+import { User } from '../interfaces/User';
 
-@Injectable({
-  providedIn: 'root'
-}) 
-export class UsersService {
+@Injectable({ providedIn: 'root' })
+export class UserService {
+    constructor(private http: HttpClient) { }
 
-  constructor(private httpClient: HttpClient) { }
+    getAll() {
+        return this.http.get<User[]>(`/users`);
+    }
 
-  // checkUser
+    register(user: User) {
+        return this.http.post(`/users/register`, user);
+    }
+
+    delete(id: number) {
+        return this.http.delete(`/users/${id}`);
+    }
 }

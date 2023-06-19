@@ -5,9 +5,6 @@ import vacations from './routes/vacations'
 import registerLogIn from './routes/auth'
 // import follow from './routers/follow.js' ????
 import cors from 'cors'
-import dotenv from 'dotenv'
-dotenv.config()
-
 
 const mongoUrl = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB_NAME}?authSource=admin`
 

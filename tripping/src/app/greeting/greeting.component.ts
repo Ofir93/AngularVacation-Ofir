@@ -8,17 +8,17 @@ import { InterfacesService } from '../../services/interfaces.service';
   providers: [InterfacesService],
 })
 export class GreetingComponent {
-  @Output() componentChange = new EventEmitter<string>();
+  // @Output() componentChange = new EventEmitter<string>();
 
 
   constructor(private interfaces: InterfacesService) {}
 
-  componentChanged(component: string){
-  this.componentChange.emit(component)
-  }
-
-  // changeComponent(component: string): void {
-  //   this.interfaces.changeComponent(component);
+  // componentChanged(component: string){
+  // this.componentChange.emit(component)
   // }
+
+  moveToLogin(): void {
+    this.interfaces.navigateToLogin();
+  }
 
 }

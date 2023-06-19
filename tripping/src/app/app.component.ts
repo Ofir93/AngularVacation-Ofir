@@ -13,18 +13,18 @@ export class AppComponent implements OnInit {
   // onKey(component: string): void {
   //   this.component = component;
   // }
-  getInterface(): void {
-     this.component = this.interfaces.getComponent()
+  checkUser(): void {
+     this.interfaces.checkJwt()
     }
   constructor(private interfaces: InterfacesService){}
 
-    changeComponent(component: string): void {
-    this.interfaces.changeComponent(component);
-    this.component = component;
-  }
+  //   changeComponent(component: string): void {
+  //   this.interfaces.changeComponent(component);
+  //   this.component = component;
+  // }
 
 
   ngOnInit(): void {
-    this.getInterface()
+    this.checkUser()
   }
 }
