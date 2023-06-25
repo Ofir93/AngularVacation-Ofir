@@ -34,8 +34,10 @@ router.post(
       req.body.password = res.locals.password
 
       const insertId = await createUser(req.body)
+      const { user_name, role, id } = req.body
+
       insertId
-        ? res.json({ accessToken: res.locals.accessToken })
+        ? res.json({ accessToken: res.locals.accessToken, user_name: user_name, role: role, id: id })
         : res.send(`Nothing inserted User name already exists`)
     } catch (error) {
       console.error(error)
@@ -84,7 +86,8 @@ router.post(
         const errors = validationResult(req).array()
         return res.status(400).send({ errors })
       }
-      res.send({ accessToken: res.locals.accessToken })
+      const { user_name, role, id } = req.body
+      res.send({ accessToken: res.locals.accessToken, user_name: user_name, role: role, id: id })
     } catch (error) {
       console.error(error)
       res.sendStatus(500)

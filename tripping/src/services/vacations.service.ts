@@ -7,15 +7,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class VacationsService {
-  getVacationsUrl = 'http://localhost:4000/vacations';
-  // getSpecificUsersUrl = 'http://localhost:3000/bulk-users';
+  getVacationsUrl = 'http://localhost:8008/vacations';
+  vacations: Observable<Vacation[]> | undefined 
+  //add? del? patch?
   constructor(private httpClient: HttpClient) {}
 
-  getUsers(): Observable<Vacation[]> {
-    return this.httpClient.get<Vacation[]>(this.getVacationsUrl);
+  getVacations(): Observable<Vacation[]> {
+    this.vacations = this.httpClient.get<Vacation[]>(this.getVacationsUrl);
+    return this.vacations
   }
 
-  // getSpecificUsers(usersIds: number[]): Observable<User[]> {
-  //   return this.httpClient.post<User[]>(this.getSpecificUsersUrl, usersIds);
-  // }
 }

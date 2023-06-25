@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserService } from './users.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InterfacesService {
   // component: string = 'greet';
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private userServise: UserService) {}
 
 
   checkJwt(): any {
@@ -27,7 +28,7 @@ export class InterfacesService {
         .post('http://localhost:8008/auth/check', { accessToken: storageToken })
         .subscribe((response: any) => {
           const decoded = response.accessToken
-          
+          console.log(response);
           if (decoded === 'invalid token' || decoded === 'jwt expired') {
             window.localStorage.removeItem('jwt');
             alert('Invalid or expired premissions, please relogin');
@@ -36,7 +37,19 @@ export class InterfacesService {
             return false;
           }
           this.router.navigateByUrl('/Vacations')
-          return decoded;
+          // console.log({
+          //   userName: response.accessToken.user_name,
+          //   role: response.accessToken.role,
+          //   jwt: storageToken,
+          //   id: response.accessToken.id
+          // });
+          this.userServise.emitUserChangeEvent({
+            userName: response.accessToken.user_name,
+            role: response.accessToken.role,
+            jwt: storageToken,
+            id: response.accessToken.id
+          })
+          return 
         });
 
       //    {
@@ -59,9 +72,6 @@ export class InterfacesService {
   }
   navigateToLogin() {
     this.router.navigateByUrl('/Login')
-  }
-  navigateToRegister() {
-    this.router.navigateByUrl('/Register')
   }
   navigateToVacations() {
     this.router.navigateByUrl('/Vacations')

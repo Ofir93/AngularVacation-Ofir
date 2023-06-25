@@ -1,4 +1,4 @@
-export interface Vacation {
+export type Vacation = {
     id: number
     desc: string
     destination: string

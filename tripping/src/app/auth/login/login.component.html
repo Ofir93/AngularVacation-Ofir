@@ -19,35 +19,37 @@
             <div class="text-center mb-5"></div>
 
             <div class="form-outline mb-4">
-              <input type="text" id="loginName" class="form-control" name="loginName" ngModel required/>
+              <input type="text" id="loginName" class="form-control" name="loginName" ngModel required />
               <label class="form-label text-white" for="loginName">User name</label>
             </div>
             <div class="form-outline mb-4">
-              <input type="password" id="loginPassword" class="form-control" name="loginPassword" ngModel required/>
+              <input type="password" id="loginPassword" class="form-control" name="loginPassword" ngModel required />
               <label class="form-label text-white" for="loginPassword">Password</label>
             </div>
             <div class="row mb-4">
               <div class="col-md-6 d-flex justify-content-center">
 
                 <div class="form-check mb-3 mb-md-0">
-                  <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked name="loginCheck" ngModel/>
-                  <label class="form-check-label text-white" for="loginCheck"> Remember me :)</label>
+                  <input class="form-check-input" type="checkbox" value="on" id="loginCheck" checked name="loginCheck"
+                    ngModel/>
+                  <label class="form-check-label text-white" for="loginCheck" > Remember me :)</label>
                 </div>
               </div>
 
               <div class="col-md-6 d-flex justify-content-center">
 
-                <a href="#!" disabled>Forgot password?</a>
+                <a  disabled>Forgot password?</a>
               </div>
             </div>
 
 
-            <button type="submit" class="btn btn-primary btn-block mb-4 w-100" [disabled]="!loginForm.valid">Sign in</button>
+            <button type="submit" class="btn btn-primary btn-block mb-4 w-100" [disabled]="!loginForm.valid">Sign
+              in</button>
             <p class="text-center text-white">
               Not a member?
-              <a class="nav-link text-success" (click)="regPanel()">
+              <button class="nav-link text-success" (click)="regPanel()">
                 Register
-              </a>
+              </button>
             </p>
           </div>
 
@@ -59,29 +61,30 @@
     <ng-container *ngIf="reg">
       <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
         <div class="form-outline mb-4">
-          <input type="text" id="registerFirstName" class="form-control" name="registerFirstName" ngModel required/>
-          <label class="form-label text-white" for="registerFirstName" >First Name</label>
+          <input type="text" id="registerFirstName" class="form-control" name="registerFirstName" ngModel required />
+          <label class="form-label text-white" for="registerFirstName">First Name</label>
         </div>
         <div class="form-outline mb-4">
-          <input type="text" id="registerLastname" class="form-control" name="registerLastname" ngModel required/>
-          <label class="form-label text-white" for="registerLastname" >Last Name</label>
+          <input type="text" id="registerLastname" class="form-control" name="registerLastname" ngModel required />
+          <label class="form-label text-white" for="registerLastname">Last Name</label>
         </div>
         <div class="form-outline mb-4">
-          <input type="email" id="registerUsername" class="form-control" name="registerUsername" ngModel required/>
-          <label class="form-label text-white" for="registerUsername" >User Name</label>
+          <input type="email" id="registerUsername" class="form-control" name="registerUsername" ngModel required />
+          <label class="form-label text-white" for="registerUsername">User Name</label>
         </div>
         <div class="form-outline mb-4">
-          <input type="password" id="registerPassword" class="form-control" name="registerPassword" ngModel required/>
-          <label class="form-label text-white" for="registerPassword" >Password</label>
+          <input type="password" id="registerPassword" class="form-control" name="registerPassword" ngModel required />
+          <label class="form-label text-white" for="registerPassword">Password</label>
         </div>
         <div class="form-check d-flex justify-content-center mb-4">
           <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-            aria-describedby="registerCheckHelpText" name="registerCheck" ngModel required/>
+            aria-describedby="registerCheckHelpText" name="registerCheck" ngModel required />
           <label class="form-check-label text-white" for="registerCheck">
             I have read and agree to the terms
           </label>
         </div>
-        <button type="submit" class="btn btn-primary btn-block mb-3 w-100" [disabled]="!registerForm.valid">Sign up</button>
+        <button type="submit" class="btn btn-primary btn-block mb-3 w-100" [disabled]="!registerForm.valid">Sign
+          up</button>
 
       </form>
     </ng-container>

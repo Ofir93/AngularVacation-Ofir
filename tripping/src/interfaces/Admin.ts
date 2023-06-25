@@ -1,4 +1,4 @@
-export interface Admin {
+export type Admin = {
     id: number
     user_name: string
     password: string

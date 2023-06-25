@@ -16,8 +16,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { GreetingComponent } from './greeting/greeting.component';
 import { VacationCardsComponent } from './vacation-cards/vacation-cards.component';
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     GreetingComponent,
     VacationCardsComponent,
     LoginComponent,
-    RegisterComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AdminService, InterfacesService, UserService, VacationsService],
+  providers: [DatePipe, AdminService, InterfacesService, UserService, VacationsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
