@@ -16,14 +16,14 @@ export const findVacation = async (
 }
 
 export const findVacations = async (filter: {
-  desc?: string
+  destination?: string
   id?: number
 }): Promise<Document<unknown, any, Ivacation>[]> => {
-  const { desc, id } = filter
+  const { destination, id } = filter
   switch (true) {
-    case desc !== undefined:
+    case destination !== undefined:
       return await Vacation.find({
-        desc: desc,
+        destination: destination,
       })
     case id !== undefined:
       return await Vacation.find({

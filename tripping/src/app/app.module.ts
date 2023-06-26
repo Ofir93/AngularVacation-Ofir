@@ -18,6 +18,8 @@ import { VacationCardsComponent } from './vacation-cards/vacation-cards.componen
 import { LoginComponent } from './auth/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
+import { AddVacComponent } from './vacation-cards/add-vac/add-vac.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { DatePipe } from '@angular/common';
     GreetingComponent,
     VacationCardsComponent,
     LoginComponent,
+    AddVacComponent,
+    ReportsComponent,
     
   ],
   imports: [

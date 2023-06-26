@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
 import { UserT } from 'src/interfaces/User';
 import { Vacation } from 'src/interfaces/Vacation';
 import { UserService } from 'src/services/users.service';
@@ -13,6 +14,7 @@ import { VacationsService } from 'src/services/vacations.service';
 export class VacationCardsComponent implements OnInit {
   vacations?: Vacation[];
   user?: UserT;
+  edit: boolean = false
 
   constructor(
     private vacationService: VacationsService,
@@ -37,9 +39,32 @@ export class VacationCardsComponent implements OnInit {
     this.user = user;
   }
 
-  ngOnInit(): void {
-    this.getVacations();
+  editVacation(id: number) {
+    this.edit = !this.edit;
+  }
 
+  deleteVacation(id: number):void {
+    this.vacationService.deleteVacation(id).subscribe({next:(res: any) => {
+      alert(res.message)
+      this.getVacations()
+      return res
+    },
+  error: (err: any) => {
+    console.log(err)
+    return
+  }})
+  }
+
+
+
+
+
+  ngOnInit(): void {
+    this.userService.subscribeToEmitter((user: UserT) => (this.user = user));
     this.selectedUserItem(this.userService.getUser());
+    this.getVacations();
+    console.log(this.user);   
+    
+    
   }
 }

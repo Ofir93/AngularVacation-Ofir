@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
   ) {}
 
   moveToLogin(): void {
-    this.interfaces.navigateToLogin();
+    this.interfaces.navigateToLogin()
   }
 
   moveToHome(): void {
@@ -29,14 +29,13 @@ export class NavBarComponent implements OnInit {
     window.localStorage.removeItem('jwt');
   }
 
-  moveToAddVacation(): void {}
+  moveToAddVacation(): void {
+    this.interfaces.navigateToAddVacations()
+  }
 
   moveToReports(): void {}
 
   ngOnInit() {
-    this.userService.subscribeToEmitter(this.selectedUserItem);
-  }
-  selectedUserItem(user: UserT) {
-    this.user = user;
+    this.userService.subscribeToEmitter((user: UserT) => (this.user = user));
   }
 }

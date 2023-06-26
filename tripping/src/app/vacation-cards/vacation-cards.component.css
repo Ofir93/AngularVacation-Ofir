@@ -1,0 +1,7 @@
+.buttonAdmin {
+    visibility: hidden;
+}
+
+.card:hover .buttonAdmin { 
+    visibility: visible;
+}

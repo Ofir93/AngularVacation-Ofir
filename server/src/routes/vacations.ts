@@ -11,8 +11,8 @@ const router: Router = Router()
 
 router.post('/', async (req: Request, res: Response) => {
   try {
-    const { desc, id } = req.body
-    const exists = await findVacations({ desc, id })
+    const { destination, id } = req.body
+    const exists = await findVacations({ destination, id })
     if (exists.length === 0) {
       const vacation = await createVacation(req.body)
       res.send(vacation)
@@ -40,8 +40,8 @@ router.patch('/:id', async (req: Request, res: Response) => {
   try {
     const isUpdated = await updateVac(req.body)
     isUpdated.acknowledged 
-      ? res.send(`Vacation ${req.params.id} updated!`)
-      : res.send('Nothing updated')
+      ? res.send({message:`Vacation ${req.params.id} updated!`})
+      : res.send({message:'Nothing updated'})
   } catch (error) {
     console.log(error)
     res.status(500).send('Nothing updated')
@@ -52,8 +52,8 @@ router.delete('/:id', async (req: Request, res: Response) => {
   try {
     const isDeleted = await deleteById(+req.params.id)
     isDeleted.deletedCount
-      ? res.send(`Vacation ${req.params.id} deleted!`)
-      : res.send('Nothing deleted')
+      ? res.send({message: `Vacation ${req.params.id} deleted!`})
+      : res.send({message:'Nothing deleted'})
   } catch (error) {
     console.log(error)
     res.status(500)

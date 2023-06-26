@@ -43,7 +43,7 @@ export class InterfacesService {
           //   jwt: storageToken,
           //   id: response.accessToken.id
           // });
-          this.userServise.emitUserChangeEvent({
+          this.userServise.setUser({
             userName: response.accessToken.user_name,
             role: response.accessToken.role,
             jwt: storageToken,
@@ -75,6 +75,10 @@ export class InterfacesService {
   }
   navigateToVacations() {
     this.router.navigateByUrl('/Vacations')
+  }
+
+  navigateToAddVacations() {
+    this.router.navigateByUrl('/Add')
   }
 
 
