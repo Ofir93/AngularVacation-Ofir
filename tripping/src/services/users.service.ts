@@ -1,43 +1,33 @@
-import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { User, UserT } from '../interfaces/User';
 
-
-
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  // userName = '';
-  // role = '';
-  // jwt = '';
-  // id? = 0;
+  currentUser: UserT = {
+    userName: '',
+    role: 'user',
+    jwt: '',
+    id: 0,
+  };
 
   userChange: EventEmitter<UserT> = new EventEmitter();
 
   constructor(private http: HttpClient) {}
 
-  emitUserChangeEvent(userObj: UserT) {
-    this.userChange.emit(userObj);
-  }
-  getUserChangeEmitter() {
-    return this.userChange;
+  getUser() {
+    return this.currentUser;
   }
 
-  // getUser() {
-  //   return {
-  //     userName: this.userName,
-  //     role: this.role,
-  //     jwt: this.jwt,
-  //     id: this.id,
-  //   };
-  // }
+  subscribeToEmitter(func: (user: UserT) => void) {
+    this.userChange.subscribe(func);
+  }
 
-  // setUser(userName: string, role: string, jwt: string, id: number | undefined) {
-  //   this.userName = userName
-  //   this.role = role
-  //   this.jwt = jwt
-  //   this.id = id;    
-  // }
+  setUser(newUser: UserT) {
+    this.currentUser = newUser;
+    this.userChange.emit(newUser);
+  }
 
   getAll() {
     return this.http.get<User[]>(`/users`);
