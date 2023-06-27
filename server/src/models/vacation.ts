@@ -9,7 +9,7 @@ const vacationSchema = new Schema<Ivacation>({
     dateStart: Date,
     dateEnd: Date,
     price: Number,
-    followers: [String]
+    followers: [Number]
 
 })
 

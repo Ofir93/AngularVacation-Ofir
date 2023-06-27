@@ -2,10 +2,10 @@
 <div>
     <div class="card-container container flex-wrap">
         <div class="card" *ngFor="let vacation of vacations" id={{vacation.id}}>
-          <app-add-vac [vacation]="vacation" [hidden]="!edit"></app-add-vac>  
-          <div class="card-body" [hidden]="edit" >
+          <app-add-vac [vacation]="vacation" [edited]="edit" (edit)="onEditChange($event)" [hidden]="!edit.edit || edit.id !== vacation.id"></app-add-vac>  
+          <div class="card-body" [hidden]="edit.id === vacation.id && edit.edit" >
                 <div class="card-body">
-                   
+                    
                       <div *ngIf="user?.role === 'admin'"
                         class="z-3 position-absolute top-0 end-0 p-1 buttonAdmin"
                       >
@@ -43,11 +43,11 @@
                     <p class="card-text">
                       Description: {{vacation.desc}}
                     </p>
-                    <!-- {user.role !== 'admin' ? (
-                      <div>
-                        <Follow vacation={vacation}></Follow>
+
+                      <div *ngIf="user?.role !== 'admin'">
+                        <app-follow [vacation]="vacation" [user]="user"></app-follow>
                       </div>
-                    ) : ( -->
+                    
                       <p class="card-text">Followers {{vacation.followers.length}}</p>
                   </div>
             </div>

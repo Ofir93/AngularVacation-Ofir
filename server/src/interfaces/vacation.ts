@@ -6,5 +6,5 @@ export interface Ivacation {
     dateStart: Date
     dateEnd: Date
     price: number
-    followers: string[]
+    followers: number[]
 }

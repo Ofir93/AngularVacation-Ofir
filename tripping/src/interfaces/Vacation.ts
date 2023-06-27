@@ -6,5 +6,5 @@ export type Vacation = {
     dateStart: Date
     dateEnd: Date
     price: number
-    followers: string[]
+    followers: number[]
 }

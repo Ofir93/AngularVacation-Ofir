@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { AddVacComponent } from './vacation-cards/add-vac/add-vac.component';
 import { ReportsComponent } from './reports/reports.component';
+import { FollowComponent } from './vacation-cards/follow/follow.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReportsComponent } from './reports/reports.component';
     LoginComponent,
     AddVacComponent,
     ReportsComponent,
+    FollowComponent,
     
   ],
   imports: [
