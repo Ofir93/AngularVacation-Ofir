@@ -14,7 +14,7 @@ import { VacationsService } from 'src/services/vacations.service';
 export class VacationCardsComponent implements OnInit {
   vacations?: Vacation[];
   user?: UserT;
-  edit: boolean = false
+  edit = {edit: false, id: 0}
 
   constructor(
     private vacationService: VacationsService,
@@ -40,7 +40,12 @@ export class VacationCardsComponent implements OnInit {
   }
 
   editVacation(id: number) {
-    this.edit = !this.edit;
+    this.edit.edit = true;
+    this.edit.id = id;
+  }
+
+  onEditChange(event: {edit: boolean, id: number}){
+    this.edit = event
   }
 
   deleteVacation(id: number):void {
@@ -55,7 +60,17 @@ export class VacationCardsComponent implements OnInit {
   }})
   }
 
-
+orderVacByFollow(vacations: Vacation[]){
+  const sortVac = vacations.sort((a,b) => {
+    const index1 = follows.indexOf(a.id)
+    const index2 = follows.indexOf(b.id)
+    return (
+      (index1 > -1 ? index1 : Infinity) -
+      (index2 > -1 ? index2 : Infinity)
+    )
+    // console.log(sortVac);
+  })
+}
 
 
 
