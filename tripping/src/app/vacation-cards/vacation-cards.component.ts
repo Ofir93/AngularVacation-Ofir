@@ -14,7 +14,7 @@ import { VacationsService } from 'src/services/vacations.service';
 export class VacationCardsComponent implements OnInit {
   vacations?: Vacation[];
   user?: UserT;
-  edit = {edit: false, id: 0}
+  edit = { edit: false, id: 0 };
 
   constructor(
     private vacationService: VacationsService,
@@ -44,42 +44,43 @@ export class VacationCardsComponent implements OnInit {
     this.edit.id = id;
   }
 
-  onEditChange(event: {edit: boolean, id: number}){
-    this.edit = event
+  onEditChange(event: { edit: boolean; id: number }) {
+    this.edit = event;
   }
 
-  deleteVacation(id: number):void {
-    this.vacationService.deleteVacation(id).subscribe({next:(res: any) => {
-      alert(res.message)
-      this.getVacations()
-      return res
-    },
-  error: (err: any) => {
-    console.log(err)
-    return
-  }})
+  deleteVacation(id: number): void {
+    this.vacationService.deleteVacation(id).subscribe({
+      next: (res: any) => {
+        alert(res.message);
+        this.getVacations();
+        return res;
+      },
+      error: (err: any) => {
+        console.log(err);
+        return;
+      },
+    });
   }
 
-orderVacByFollow(vacations: Vacation[]){
-  const sortVac = vacations.sort((a,b) => {
-    const index1 = follows.indexOf(a.id)
-    const index2 = follows.indexOf(b.id)
-    return (
-      (index1 > -1 ? index1 : Infinity) -
-      (index2 > -1 ? index2 : Infinity)
-    )
-    // console.log(sortVac);
-  })
-}
-
-
+  orderVacByFollow(vacations: Vacation[]) {
+    return vacations
+      .map((vacation) => ({
+        ...vacation,
+        following:
+          vacation.followers.findIndex(
+            (followerId) => followerId == this.user?.id
+          ) > -1,
+      }))
+      .sort((a, b) => {
+        if (a.following != b.following) return a.following ? -1 : 1;
+        return 0;
+      });
+  }
 
   ngOnInit(): void {
     this.userService.subscribeToEmitter((user: UserT) => (this.user = user));
     this.selectedUserItem(this.userService.getUser());
     this.getVacations();
-    console.log(this.user);   
-    
-    
+    console.log(this.user);
   }
 }
