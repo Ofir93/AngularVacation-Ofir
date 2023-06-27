@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { UserT } from 'src/interfaces/User';
 import { UserService } from 'src/services/users.service';
 import { InterfacesService } from '../../services/interfaces.service';
@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
   ) {}
 
   moveToLogin(): void {
-    this.interfaces.navigateToLogin()
+    this.interfaces.navigateToLogin();
   }
 
   moveToHome(): void {
@@ -30,10 +30,12 @@ export class NavBarComponent implements OnInit {
   }
 
   moveToAddVacation(): void {
-    this.interfaces.navigateToAddVacations()
+    this.interfaces.navigateToAddVacations();
   }
 
-  moveToReports(): void {}
+  moveToReports(): void {
+    this.interfaces.navigateToReports();
+  }
 
   ngOnInit() {
     this.userService.subscribeToEmitter((user: UserT) => (this.user = user));

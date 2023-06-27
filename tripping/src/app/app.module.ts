@@ -6,9 +6,9 @@ import {
   NgbPaginationModule,
   NgbAlertModule,
 } from '@ng-bootstrap/ng-bootstrap';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminService } from 'src/services/admin.service';
 import { InterfacesService } from 'src/services/interfaces.service';
 import { UserService } from 'src/services/users.service';
 import { VacationsService } from 'src/services/vacations.service';
@@ -32,7 +32,6 @@ import { FollowComponent } from './vacation-cards/follow/follow.component';
     AddVacComponent,
     ReportsComponent,
     FollowComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -42,9 +41,10 @@ import { FollowComponent } from './vacation-cards/follow/follow.component';
     NgbAlertModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CanvasJSAngularChartsModule,
   ],
-  providers: [DatePipe, AdminService, InterfacesService, UserService, VacationsService],
+  providers: [DatePipe, InterfacesService, UserService, VacationsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

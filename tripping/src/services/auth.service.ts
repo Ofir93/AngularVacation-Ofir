@@ -26,7 +26,6 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {}
 
   singIn(obj: SingObj): Observable<Object> {
-    console.log('singin in');
     return this.http.post(this.loginUrl, {
       user_name: obj.loginName,
       password: obj.loginPassword,
@@ -34,8 +33,6 @@ export class AuthenticationService {
   }
 
   singUp(obj: SingObjRes): Observable<Object> {
-    console.log('singin up');
-
     return this.http.post(this.regUrl, {
       user_name: obj.registerUsername,
       password: obj.registerPassword,

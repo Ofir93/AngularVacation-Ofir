@@ -41,11 +41,9 @@ export class LoginComponent {
           id: response.id,
         });
         this.inter.navigateToVacations();
-        console.log(response);
         return response.accessToken;
       },
       error: (error: any) => {
-        console.log(error);
         error.error.errors ? alert(error.error.errors) : alert(error.error);
         return;
       },
@@ -55,7 +53,6 @@ export class LoginComponent {
   register(form: NgForm) {
     this.auth.singUp(form.value).subscribe({
       next: (response: any) => {
-        console.log(response);
         if (response === 'Nothing inserted User name already exists') {
           return alert('User name already exists please try again');
         }

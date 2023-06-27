@@ -1,56 +1,41 @@
-
 <div>
-    <div class="card-container container flex-wrap">
-        <div class="card" *ngFor="let vacation of vacations" id={{vacation.id}}>
-          <app-add-vac [vacation]="vacation" [edited]="edit" (edit)="onEditChange($event)" [hidden]="!edit.edit || edit.id !== vacation.id"></app-add-vac>  
-          <div class="card-body" [hidden]="edit.id === vacation.id && edit.edit" >
-                <div class="card-body">
-                    
-                      <div *ngIf="user?.role === 'admin'"
-                        class="z-3 position-absolute top-0 end-0 p-1 buttonAdmin"
-                      >
-                        <button
-                          type="button"
-                          class="btn btn-outline-info btn-sm"
-                          (click)="editVacation(vacation.id)"
-                        >
-                          <i class="bi bi-pencil"></i>
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-outline-danger btn-sm m-1"
-                          (click)="deleteVacation(vacation.id)"
-                        >
-                          <i class="bi bi-file-earmark-x"></i>
-                        </button>
-                      </div>
-                    
-                    <h3 class="card-title z-2">
-                      Destination: <br /> {{vacation.destination}}
-                    </h3>
-                    <p class="card-text">
-                      From Date: {{this.datepipe.transform(vacation.dateStart, 'yyyy-MM-dd')}}
-                    </p>
-                    <p class="card-text">
-                      To Date: {{this.datepipe.transform(vacation.dateEnd, 'yyyy-MM-dd')}}
-                    </p>
-                    <img
-                      class="card-img-top"
-                      src={{vacation.photo}}
-                      alt="vacation"
-                    >
-                    <p class="card-text">Price: {{vacation.price}}$</p>
-                    <p class="card-text">
-                      Description: {{vacation.desc}}
-                    </p>
+  <div class="card-container container flex-wrap">
+    <div class="card" *ngFor="let vacation of vacations" id={{vacation.id}}>
+      <app-add-vac [vacation]="vacation" [edited]="edit" (edit)="onEditChange($event)"
+        [hidden]="!edit.edit || edit.id !== vacation.id"></app-add-vac>
+      <div class="card-body" [hidden]="edit.id === vacation.id && edit.edit">
+        <div class="card-body">
 
-                      <div *ngIf="user?.role !== 'admin'">
-                        <app-follow [vacation]="vacation" [user]="user"></app-follow>
-                      </div>
-                    
-                      <p class="card-text">Followers {{vacation.followers.length}}</p>
-                  </div>
-            </div>
+          <div *ngIf="user?.role === 'admin'" class="z-3 position-absolute top-0 end-0 p-1 buttonAdmin">
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="editVacation(vacation.id)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-sm m-1" (click)="deleteVacation(vacation.id)">
+              <i class="bi bi-file-earmark-x"></i>
+            </button>
+          </div>
+
+          <h3 class="card-title z-2">
+            Destination: <br /> {{vacation.destination}} </h3>
+          <p class="card-text">
+            From Date: {{this.datepipe.transform(vacation.dateStart, 'yyyy-MM-dd')}}
+          </p>
+          <p class="card-text">
+            To Date: {{this.datepipe.transform(vacation.dateEnd, 'yyyy-MM-dd')}}
+          </p>
+          <img class="card-img-top" src={{vacation.photo}} alt="vacation">
+          <p class="card-text">Price: {{vacation.price}}$</p>
+          <p class="card-text">
+            Description: {{vacation.desc}}
+          </p>
+
+          <div *ngIf="user?.role !== 'admin'">
+            <app-follow [vacation]="vacation" [user]="user"></app-follow>
+          </div>
+
+          <p class="card-text">Followers {{vacation.followers.length}}</p>
         </div>
+      </div>
     </div>
+  </div>
 </div>
