@@ -1,11 +1,7 @@
 import { DatePipe } from '@angular/common';
 import {
   Component,
-  EventEmitter,
   OnInit,
-  Output,
-  TemplateRef,
-  ViewChild,
 } from '@angular/core';
 import { UserT } from 'src/interfaces/User';
 import { Vacation } from 'src/interfaces/Vacation';

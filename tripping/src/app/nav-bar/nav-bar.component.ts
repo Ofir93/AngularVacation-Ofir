@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserT } from 'src/interfaces/User';
 import { UserService } from 'src/services/users.service';
 import { InterfacesService } from '../../services/interfaces.service';
@@ -14,6 +14,8 @@ export class NavBarComponent implements OnInit {
     private interfaces: InterfacesService,
     private userService: UserService
   ) {}
+
+  
 
   moveToLogin(): void {
     this.interfaces.navigateToLogin();
