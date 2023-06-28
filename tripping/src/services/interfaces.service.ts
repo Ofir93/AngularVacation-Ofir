@@ -7,7 +7,6 @@ import { UserService } from './users.service';
   providedIn: 'root',
 })
 export class InterfacesService {
-  // component: string = 'greet';
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -20,7 +19,7 @@ export class InterfacesService {
     if (!storageToken) {
       console.log('token not found');
       this.navigateToHome();
-      return false; //
+      return false; 
     }
 
     try {
@@ -28,7 +27,6 @@ export class InterfacesService {
         .post('http://localhost:8008/auth/check', { accessToken: storageToken })
         .subscribe((response: any) => {
           const decoded = response.accessToken;
-          console.log(response);
           if (decoded === 'invalid token' || decoded === 'jwt expired') {
             window.localStorage.removeItem('jwt');
             alert('Invalid or expired premissions, please relogin');

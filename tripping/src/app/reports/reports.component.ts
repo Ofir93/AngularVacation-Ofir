@@ -32,23 +32,21 @@ export class ReportsComponent implements OnInit {
     ],
   };
 
-  getVacations() {
-    this.vacationService
-      .getVacations()
-      .subscribe((vacations) => this.getData(vacations));
+  getVacation(){
+   this.chartOptions.data[0].dataPoints = this.vacationService.getVacation().map(
+    (vacation: Vacation) => ({
+      label: vacation.destination,
+      y: vacation.followers.length,
+    })
+  )
   }
 
-  getData(vacations: any) {
-    vacations.map((vacation: Vacation, index: number) => {
-      const vacData = {
-        label: vacation.destination,
-        y: vacation.followers.length,
-      };
-      this.vacDataPoints.push(vacData);
-    });
+
+  ngAfterContentInit() {
+    console.log(this.vacDataPoints);
   }
 
   ngOnInit(): void {
-    this.getVacations();
+    this.getVacation();
   }
 }

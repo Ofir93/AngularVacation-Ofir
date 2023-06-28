@@ -9,7 +9,30 @@ import { Observable } from 'rxjs';
 export class VacationsService {
   getVacationsUrl = 'http://localhost:8008/vacations';
   length: number | undefined;
+
+  vacForFollow: Vacation[] = [{
+    id: 0,
+    desc: '',
+    destination: '',
+    photo: '',
+    dateStart: new Date,
+    dateEnd: new Date,
+    price: 0,
+    followers: []
+}]
   constructor(private httpClient: HttpClient) {}
+
+  getVacation() {
+    return this.vacForFollow;
+  }
+
+  setVacation() {
+    this.getVacations().subscribe((vac) => {
+      this.vacForFollow = vac;
+      
+    })
+  }
+
 
   getVacations(): Observable<Vacation[]> {
     return this.httpClient.get<Vacation[]>(this.getVacationsUrl);

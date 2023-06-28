@@ -86,5 +86,6 @@ export class VacationCardsComponent implements OnInit {
     this.userService.subscribeToEmitter((user: UserT) => (this.user = user));
     this.selectedUserItem(this.userService.getUser());
     this.getVacations();
+    this.vacationService.setVacation()
   }
 }
