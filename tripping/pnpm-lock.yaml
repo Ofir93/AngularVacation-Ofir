@@ -29,6 +29,9 @@ dependencies:
   '@angular/router':
     specifier: ^15.0.0
     version: 15.0.0(@angular/common@15.0.0)(@angular/core@15.0.0)(@angular/platform-browser@15.0.0)(rxjs@7.5.0)
+  '@canvasjs/angular-charts':
+    specifier: ^1.0.3
+    version: 1.0.3(@angular/common@15.0.0)(@angular/core@15.0.0)(@canvasjs/charts@3.7.10)
   '@ng-bootstrap/ng-bootstrap':
     specifier: ^14.2.0
     version: 14.2.0(@angular/common@15.0.0)(@angular/core@15.0.0)(@angular/forms@15.0.0)(@angular/localize@15.0.0)(@popperjs/core@2.11.6)(rxjs@7.5.0)
@@ -296,7 +299,7 @@ packages:
       '@angular/common': 15.0.0(@angular/core@15.0.0)(rxjs@7.5.0)
       '@angular/core': 15.0.0(rxjs@7.5.0)(zone.js@0.12.0)
       rxjs: 7.5.0
-      tslib: 2.3.0
+      tslib: 2.4.1
     optionalDependencies:
       parse5: 7.1.2
     dev: false
@@ -1717,6 +1720,23 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
+
+  /@canvasjs/angular-charts@1.0.3(@angular/common@15.0.0)(@angular/core@15.0.0)(@canvasjs/charts@3.7.10):
+    resolution: {integrity: sha512-4tyl8ZBpOMpE+0jVoIS1lMdulB1BW2IPca5XPH0HJ6sv9i+F2h0r/h8Da0WR4/ZEfvev5ISh2y94GS/bxCG6Dg==}
+    peerDependencies:
+      '@angular/common': '>=12.0.0'
+      '@angular/core': '>=12.0.0'
+      '@canvasjs/charts': ^3.7.5
+    dependencies:
+      '@angular/common': 15.0.0(@angular/core@15.0.0)(rxjs@7.5.0)
+      '@angular/core': 15.0.0(rxjs@7.5.0)(zone.js@0.12.0)
+      '@canvasjs/charts': 3.7.10
+      tslib: 2.4.1
+    dev: false
+
+  /@canvasjs/charts@3.7.10:
+    resolution: {integrity: sha512-xtVm6I3nnBQ0BAxFqYCX14GQWS9MUdOV1F25IPgUm01iGe6T49hQRw3Y+gtjFLihHNEoERyZy0o/tf6xegjrYA==}
+    dev: false
 
   /@colors/colors@1.5.0:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -4630,7 +4650,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.3.0
+      tslib: 2.4.1
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11
@@ -5831,7 +5851,7 @@ packages:
   /rxjs@7.5.7:
     resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.4.1
     dev: true
 
   /safe-buffer@5.1.2:
@@ -6438,7 +6458,6 @@ packages:
 
   /tslib@2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
-    dev: true
 
   /type-fest@0.21.3:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
